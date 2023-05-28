@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-image: url(image9.JPG);
+      background-repeat: no-repeat;
+        background-attachment: fixed;
+        background-size: cover;
+     
+    }
+
+    header {
+      background-color: #333;
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    h1 {
+      margin: 0;
+    }
+
+    section {
+      padding: 145px;
+      text-align: center;
+      
+    }
+    
+    .converter {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    .converter input[type="text"] {
+      width: 95%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .converter select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+
+    .converter button {
+      padding: 5px 10px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    .result {
+      margin-top: 20px;
+      font-weight: bold;
+      color: #fff;
+    }
+
+    footer {
+      font-size: 20px;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      background-color: black;
+      margin-bottom: 0 auto;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Welcome to Temperature_Converter</h1>
+  </header>
+
+  <section>
+    <table align="center" border="0" width="40%" height="300px" bgcolor="grey">
+      <tr>
+    <td><div class="converter">
+      <input type="text" id="temperatureInput" placeholder="Enter temperature">
+      <select id="unitSelect">
+        <option value="celsius">Celsius</option>
+        <option value="fahrenheit">Fahrenheit</option>
+      </select>
+      <button onclick="convertTemperature()">Convert</button>
+      <div id="result" class="result"></div>
+    </div>
+  </td>
+  </tr>
+  </table>
+  </section>
+
+  <script>
+    function convertTemperature() {
+      const temperatureInput = document.getElementById("temperatureInput");
+      const unitSelect = document.getElementById("unitSelect");
+      const resultElement = document.getElementById("result");
+
+      const temperature = parseFloat(temperatureInput.value);
+      const unit = unitSelect.value;
+
+      if (isNaN(temperature)) {
+        resultElement.innerText = "Please enter a valid temperature.";
+        return;
+      }
+
+      let convertedTemperature, convertedUnit;
+
+      if (unit === "celsius") {
+        convertedTemperature = (temperature * 9) / 5 + 32;
+        convertedUnit = "Fahrenheit";
+      } else {
+        convertedTemperature = ((temperature - 32) * 5) / 9;
+        convertedUnit = "Celsius";
+      }
+
+      resultElement.innerText = `Converted temperature: ${convertedTemperature.toFixed(2)} ${convertedUnit}`;
+    }
+  </script>
+   <footer>
+    <p>&copy; 2023 Temparature_Converter. All rights reserved.</p>
+  </footer>
+</body>
+</html>  
